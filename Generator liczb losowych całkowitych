@@ -1,0 +1,61 @@
+#include <iostream>
+#include <windows.h>
+#include <cstdlib>
+#include <time.h>
+#include <fstream>
+
+using namespace std;
+
+int zakresMin;
+int zakresMax;
+float liczba;
+int ilosc;
+
+int main()
+{
+    cout << "Czesc!!! " << endl;Sleep (200);
+    cout << "Witaj w generatorze liczb losowych Konrada :-)) " << endl; Sleep (500);
+    cout << " " << endl;
+
+    cout << "Wygeneruj dla swojej statystycznej kontroli procesu losowe wartosci pomiarow" << endl; Sleep (200);
+    cout << "Tak by proces Twoj byl zdolny a Ty nie narobil sie i spokoju zaznal! :-) " << endl; Sleep (500);
+    cout << "Podaj najpierw ile liczb losowych chcesz wygenerowac i wcisnij enter" << endl;
+    cout << "Ilosc=" ;
+
+    cin >> ilosc;
+
+    cout << " " << endl;
+    cout << "Teraz podaj zakres, z jakiego maja to byc liczby" << endl;
+    cout << "Podaj liczbe MIN i wcisnij enter" << endl;
+    cout << "MIN=" ;
+
+    cin >> zakresMin;
+
+    cout << " " << endl;
+    cout << "Teraz podaj liczbe MAX i wcisnij enter" << endl;
+    cout << "MAX=" ;
+
+    cin >> zakresMax; Sleep (1000);
+
+    cout << " " << endl;
+    cout << "Twoje losowe liczby wypisalem ponizej:" << endl;
+    cout << " " << endl;
+
+    srand(time(NULL));
+
+    ofstream out ("GeneratorLiczbLosowych.txt");
+
+    for (int i=1; i<=ilosc; i++)
+    {
+        liczba = zakresMin + rand() % (zakresMax - zakresMin + 1);
+        out << liczba << endl;
+        cout << i << "." << liczba << endl;
+    }
+    out.close();
+
+  cout << " " << endl;
+  cout << "Zapisalem powyzsze liczby w pliku GeneratorLiczbLosowych.txt" << endl;
+  cout << "Uzywaj do woli! :-) " << endl;
+  cout << " " << endl;
+
+}
