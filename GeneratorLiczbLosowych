@@ -1,0 +1,79 @@
+#include <iostream>
+#include <windows.h>
+#include <cstdlib>
+#include <time.h>
+#include <fstream>
+#include <math.h>
+#include <iomanip>
+
+
+using namespace std;
+
+    double ZakresMin;
+    double ZakresMax;
+    int Precyzja;
+    int ileMiejsc;
+    int ilosc;
+
+int main()
+{
+    cout << "Czesc!!! " << endl;Sleep (200);
+    cout << "Wita Cie Konrad P " << endl;
+    cout << "A to jest generator liczb losowych na potrzeby SPC :-)) " << endl;
+    cout << " " << endl; Sleep (200);
+
+    cout << "Wygeneruj dla swojej statystycznej kontroli losowe wartosci pomiarow" << endl;
+    cout << "tak by proces Twoj byl zawsze zdolny a Ty nie narobil sie i spokoju w pracy zaznal! :-) " << endl;
+    cout << " " << endl; Sleep (200);
+
+    cout << "Podaj najpierw zakres z jakiego chcesz generowac liczby." << endl;
+    cout << "Podaj liczbe MIN i wcisnij enter;" << endl;
+    cout << "MIN = ";
+    cin >> ZakresMin;
+    cout << " " << endl; Sleep (200);
+
+    cout << "Podaj liczbe MAX i wcisnij enter;" << endl;
+    cout << "MAX = ";
+    cin >> ZakresMax;
+    cout << " " << endl; Sleep (200);
+
+    cout << "Podaj dokladnosc wygenerowanych liczb - ilosc miejsc po przecinku;" << endl;
+    cout << "Dokladnosc = ";
+    cin >> ileMiejsc;
+    Precyzja = ileMiejsc + 2;
+    cout << " " << endl; Sleep (200);
+
+    cout << "Podaj ile liczb chcesz wygenerowac;" << endl;
+    cout << "Ilosc = ";
+    cin >> ilosc;
+    cout << " " << endl; Sleep (200);
+
+    cout << "Oto Twoje liczby:" << endl;
+    cout << " " << endl;
+
+    srand(time(NULL));
+
+    ofstream out ("GeneratorLiczbLosowych.txt");
+    out << "Ilosc liczb: " << ilosc << endl;
+    out << "Zakres MIN: " << ZakresMin << endl;
+    out << "Zakres MAX: " << ZakresMax << endl;
+    out << "Liczb po przecinku: " << ileMiejsc << endl;
+    out << " " << endl;
+    out << "Oto wygenerowane dla Ciebie liczby " << endl;
+    out << " " << endl;
+
+    for (int i=1; i<=ilosc; i++)
+    {
+    double Rand = (double)rand() / RAND_MAX;
+    double Liczba = ZakresMin + Rand * (ZakresMax - ZakresMin);
+    cout << setprecision(Precyzja) << "Liczba " << i << ": " << Liczba << endl;
+    out << setprecision(Precyzja) << Liczba << endl;
+    }
+    out.close();
+
+    cout << " " << endl;
+    cout << "Powyzsze liczby zapisalem rowniez w pliku GeneratorLiczbLosowych.txt" << endl;
+    cout << " " << endl; Sleep (200);
+
+    return 0;
+}
